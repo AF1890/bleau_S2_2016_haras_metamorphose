@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div id="_admin" xmlns="http://www.w3.org/1999/html">
+        {% include 'HarasBundle::nav_admin.html.twig' %}
+        <div class="container">
+            <div class="cadre">
+                <div class="row">
+                    <h1 class="admin_title">Create new article</h1>
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input class="waves-effect waves-light btn waves-input-wrapper" type="submit" value="Create article"/>
+                    {{ form_end(form) }}
+                    <a class="admin_button col m3 waves-effect waves-light btn" href="{{ path('page_show', { 'name' : page.name }) }}">
+                        Return to {{ page.name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

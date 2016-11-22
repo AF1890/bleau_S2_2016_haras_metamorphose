@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div id="_admin" class="container">
+        {% include 'HarasBundle::nav_admin.html.twig' %}
+        <div class="cadre">
+            {{ form_start(edit_form) }}
+                <div class="row">
+                    <h1 class="admin_title">Media edit</h1>
+                    <div class="col m12">
+                        <p>Current media: </p>
+                        <img src="{{ asset(medium.path) }}" alt="{{ medium.alt }}" height=100px>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        Change current media:
+                        {{ form_errors(edit_form.file) }}
+                        {{ form_widget(edit_form.file) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        Alternative text:
+                        <div class="input-field inline">
+                            {{ form_errors(edit_form.alt) }}
+                            {{ form_widget(edit_form.alt) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="admin_button col m6">
+                        <div class="waves-effect waves-light btn">
+                            <input type="submit" value="Edit"/>
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(edit_form) }}
+            <a class="admin_button col m12 waves-effect waves-light btn" href="{{ path('page_show', { 'name': page.name }) }}">Back to the list</a>
+        </div>
+    </div>
+{% endblock %}
